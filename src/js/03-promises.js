@@ -9,14 +9,12 @@ refs.form.addEventListener('submit', onFormSubmit);
 function onFormSubmit(evt) {
   evt.preventDefault();
   const { delay, step, amount } = evt.target.elements;
-  console.log(delay, step, amount);
 
   let delayValue = Number(delay.value);
   const stepValue = Number(step.value);
   const amountValue = Number(amount.value);
 
   for (let i = 0; i < amountValue; i += 1) {
-    console.log('createPromise');
     createPromise(i + 1, delayValue)
       .then(({ position, delay }) => {
         Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
